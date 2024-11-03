@@ -1,13 +1,5 @@
-<script>
+<script setup>
 import Button from "../reusable/Button.vue";
-export default {
-  components: { Button },
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-};
 </script>
 
 <template>

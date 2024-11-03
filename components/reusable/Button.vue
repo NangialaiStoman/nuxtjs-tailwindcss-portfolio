@@ -1,16 +1,16 @@
-<template>
-  <button @click="$emit('click')">{{ title }}</button>
-</template>
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  }
+});
 
-<script>
-export default {
-  props: ["title"],
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-};
+const emit = defineEmits(["click"]);
 </script>
+
+<template>
+  <button @click="emit('click')">{{ title }}</button>
+</template>
 
 <style lang="scss" scoped></style>

@@ -1,7 +1,23 @@
-<script>
-export default {
-  props: ["isOpen", "showModal", "modal", "categories"],
-};
+<script setup>
+
+defineProps({
+  isOpen: {
+    type: Boolean,
+    required: true
+  },
+  showModal: {
+    type: Function,
+    required: true
+  },
+  modal: {
+    type: Boolean,
+    required: true
+  },
+  categories: {
+    type: Array,
+    required: true
+  },
+});
 </script>
 
 <template>

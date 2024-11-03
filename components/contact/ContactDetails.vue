@@ -1,12 +1,11 @@
-<script>
-export default {
-  props: ["contacts"],
-  data: () => {
-    return {
-      // @todo
-    };
+<script setup>
+
+defineProps({
+  contacts: {
+    type: Array,
+    required: true,
   },
-};
+});
 </script>
 
 <template>

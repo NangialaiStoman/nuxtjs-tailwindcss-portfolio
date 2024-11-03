@@ -1,16 +1,16 @@
-<script>
+<script setup>
 import feather from "feather-icons";
+import AboutMe from "@/components/about/AboutMe.vue";
+import AboutCounter from "@/components/about/AboutCounter.vue";
+import AboutClients from "@/components/about/AboutClients.vue";
 
-export default {
-  name: "About",
-  scrollToTop: true,
-  mounted() {
-    feather.replace();
-  },
-  updated() {
-    feather.replace();
-  },
-};
+onMounted(() => {
+  feather.replace();
+});
+
+onUpdated(() => {
+  feather.replace();
+});
 </script>
 
 <template>

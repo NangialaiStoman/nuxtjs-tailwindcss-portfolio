@@ -1,15 +1,5 @@
-<script>
-export default {
-  scrollToTop: true,
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-  computed: {
-    // @todo
-  },
-};
+<script setup>
+import ProjectsGrid from "~/components/projects/ProjectsGrid.vue";
 </script>
 
 <template>

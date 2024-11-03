@@ -1,19 +1,25 @@
-<script>
+<script setup>
 import feather from "feather-icons";
 import Button from "./reusable/Button.vue";
-export default {
-  props: ["showModal", "modal", "categories"],
-  components: { Button },
-  data: () => {
-    return {
-      // @todo
-    };
+
+defineProps({
+  showModal: {
+    type: Function,
+    required: true
   },
-  mounted() {
-    feather.replace();
+  modal: {
+    type: Boolean,
+    required: true
   },
-  methods: {},
-};
+  categories: {
+    type: Array,
+    required: true
+  }
+});
+
+onMounted(() => {
+  feather.replace();
+});
 </script>
 
 <template>
@@ -146,7 +152,6 @@ export default {
                       "
                       id="subject"
                       name="subject"
-                      type="text"
                       required=""
                       aria-label="Project Category"
                     >

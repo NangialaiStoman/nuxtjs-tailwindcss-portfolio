@@ -1,12 +1,4 @@
-<script>
-export default {
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-};
-</script>
+<script setup></script>
 
 <template>
   <div class="mt-10 sm:mt-20 bg-primary-light dark:bg-ternary-dark shadow-sm">

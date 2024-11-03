@@ -1,40 +1,32 @@
-<script>
+<script setup>
 import feather from "feather-icons";
 
-export default {
-  components: {},
-  data() {
-    return {
-      userScrollPosition: 0,
-    };
-  },
-  computed: {
-    isScrolled() {
-      return this.userScrollPosition > 100;
-    },
-  },
-  mounted() {
-    window.addEventListener("scroll", this.updateScrollPosition);
-    feather.replace();
-  },
-  updated() {
-    feather.replace();
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.updateScrollPosition);
-  },
-  methods: {
-    updateScrollPosition() {
-      this.userScrollPosition = window.scrollY;
-    },
-    backToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    },
-  },
-};
+const userScrollPosition = ref(0);
+const isScrolled = computed(() => userScrollPosition.value > 100);
+
+function updateScrollPosition() {
+  userScrollPosition.value = window.scrollY;
+}
+
+function backToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", updateScrollPosition);
+  feather.replace();
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", updateScrollPosition);
+});
+
+onUpdated(() => {
+  feather.replace();
+});
 </script>
 
 <template>

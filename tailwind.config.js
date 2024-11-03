@@ -1,7 +1,7 @@
-const colors = require("tailwindcss/colors");
+import tailwindcssForms from "@tailwindcss/forms";
 
-module.exports = {
-  purge: [
+export default {
+  content: [
     "./components/**/*.{vue,js}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
@@ -11,6 +11,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 4s linear infinite",
+      },
       colors: {
         "primary-light": "#F7F8FC",
         "secondary-light": "#FFFFFF",
@@ -22,10 +25,10 @@ module.exports = {
       },
       container: {
         padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "5rem",
-          xl: "6rem",
+          "DEFAULT": "1rem",
+          "sm": "2rem",
+          "lg": "5rem",
+          "xl": "6rem",
           "2xl": "8rem",
         },
       },
@@ -36,5 +39,7 @@ module.exports = {
       opacity: ["disabled"],
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    tailwindcssForms
+  ],
 };

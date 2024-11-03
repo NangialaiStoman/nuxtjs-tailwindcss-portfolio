@@ -1,15 +1,10 @@
-<script>
-import { mapState } from "vuex";
-export default {
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-  computed: {
-    ...mapState(["clientsHeading", "clients"]),
-  },
-};
+<script setup>
+import { useMainStore } from "~/store/index";
+import AboutClientSingle from "./AboutClientSingle.vue";
+
+const mainStore = useMainStore();
+const clientsHeading = computed(() => mainStore.clientsHeading);
+const clients = computed(() => mainStore.clients);
 </script>
 
 <template>

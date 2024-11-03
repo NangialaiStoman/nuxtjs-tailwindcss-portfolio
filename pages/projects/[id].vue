@@ -1,26 +1,19 @@
-<script>
+<script setup>
+import { useMainStore } from "~/store";
 import feather from "feather-icons";
-import ProjectRelatedProjects from "../../components/projects/ProjectRelatedProjects.vue";
-export default {
-  scrollToTop: true,
-  data: () => {
-    return {
-      // @todo
-    };
-  },
-  computed: {
-    project() {
-      return this.$store.getters.getProjectById(this.$route.params.id);
-    },
-  },
-  mounted() {
-    feather.replace();
-  },
-  updated() {
-    feather.replace();
-  },
-  components: { ProjectRelatedProjects },
-};
+import ProjectRelatedProjects from "~/components/projects/ProjectRelatedProjects.vue";
+
+const mainStore = useMainStore();
+const route = useRoute();
+const project = computed(() => mainStore.getProjectById(route.params.id));
+
+onMounted(() => {
+  feather.replace();
+});
+
+onUpdated(() => {
+  feather.replace();
+});
 </script>
 
 <template>

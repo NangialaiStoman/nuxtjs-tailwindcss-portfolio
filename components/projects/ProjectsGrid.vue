@@ -1,42 +1,42 @@
-<script>
-import { mapState } from "vuex";
+<script setup>
+import { useMainStore } from "~/store";
 import feather from "feather-icons";
+import ProjectsFilter from "./ProjectsFilter.vue";
 
-export default {
-  data: () => {
-    return {
-      selectedProject: "",
-      searchProject: "",
-    };
-  },
-  computed: {
-    ...mapState(["projectsHeading", "projectsDescription", "projects"]),
-    filteredProjects() {
-      if (this.selectedProject) {
-        return this.filterProjectsByCategory();
-      } else if (this.searchProject) {
-        return this.filterProjectsBySearch();
-      }
-      return this.projects;
-    },
-  },
-  methods: {
-    filterProjectsByCategory() {
-      return this.projects.filter((item) => {
-        let category =
-          item.category.charAt(0).toUpperCase() + item.category.slice(1);
-        return category.includes(this.selectedProject);
-      });
-    },
-    filterProjectsBySearch() {
-      let project = new RegExp(this.searchProject, "i");
-      return this.projects.filter((el) => el.title.match(project));
-    },
-  },
-  mounted() {
-    feather.replace();
-  },
-};
+const mainStore = useMainStore();
+
+const selectedProject = ref("");
+const searchProject = ref("");
+
+const projectsHeading = computed(() => mainStore.projectsHeading);
+const projectsDescription = computed(() => mainStore.projectsDescription);
+const projects = computed(() => mainStore.projects);
+
+const filteredProjects = computed(() => {
+  if (selectedProject.value) {
+    return filterProjectsByCategory();
+  } else if (searchProject.value) {
+    return filterProjectsBySearch();
+  }
+  return projects.value;
+});
+
+function filterProjectsByCategory() {
+  return projects.value.filter((item) => {
+    let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+    return category.includes(selectedProject.value);
+  });
+}
+
+function filterProjectsBySearch() {
+  let project = new RegExp(searchProject.value, "i");
+  return projects.value.filter(el => el.title.match(project));
+}
+
+onMounted(() => {
+  feather.replace();
+});
+
 </script>
 
 <template>
